@@ -1,0 +1,45 @@
+service: hudson-dummy-python-api
+
+frameworkVersion: '2'
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+    noDeploy:
+      - boto2
+      - botocore
+
+package:
+  individually: true
+  exclude:
+    - venv/**
+    - node_modules/**
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: us-east-1
+  lambdaHashingVersion: 20201221
+  # iamRoleStatements:
+  #   - Effect: Allow
+  #     Action:
+  #       - s3:*
+  #     Resource:
+  #       - 
+
+functions:
+  helloWorld:
+    handler: helloWorld.main
+    module: helloWorld
+    package:
+      include:
+        - helloWorld/*
+    events:
+      - http:
+          path: helloWorld
+          method: get
+          cors: true

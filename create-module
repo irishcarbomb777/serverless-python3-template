@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd libs
+libdir=$(pwd)
+cd ..
+
+mkdir $1
+cd $1
+touch requirements.txt
+touch $1.py
+createsym ${libdir} ./
+cd ..
