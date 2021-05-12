@@ -1,0 +1,29 @@
+#!/bin/bash
+
+username='danielclannan@gmail.com'
+password='Luckycharms1112'
+userPoolId='us-east-1_kngv1Uwwk'
+appClientId='143er74j7g5v0nee5f3qk8939l'
+cognitoRegion='us-east-1'
+identityPoolId='us-east-1:91fcea35-ad17-44c0-afa4-71de1f8a3e6a'
+invokeUrl='https://kqzjm27sn7.execute-api.us-east-1.amazonaws.com/dev'
+apiGatewayRegion='us-east-1'
+pathTemplate='/helloWorld'
+method='GET'
+body='{}'
+# params='{"packageId":"tradePackageSingle"}'
+# additionalParams='{"queryParams":{"packageId":"tradePackageSingle","projectName":"blueprint","logoFileName":"blueprintLogo.png","Color":"Black"}}'
+#additionalParams='{"queryParams":{"itemId":"gildan-18500","imprintId":"fullChest","brand":"gildan","productCode":"18500","align":"top-left","positionX":"200","positionY":"500","maxWidth":"200","maxHeight":"200","orientation":"Front","placement":"fullChest"}}'
+apig-test \
+--username=${username} \
+--password=${password} \
+--user-pool-id=${userPoolId}  \
+--app-client-id=${appClientId} \
+--cognito-region=${cognitoRegion} \
+--identity-pool-id=${identityPoolId} \
+--invoke-url=${invokeUrl} \
+--api-gateway-region=${apiGatewayRegion} \
+--path-template=${pathTemplate} \
+--method=${method} \
+--body=${body} \
+# --additional-params=${additionalParams}

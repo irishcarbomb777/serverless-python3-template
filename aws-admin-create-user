@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Ask the user for details
+read -p 'Email Username: ' username
+read -p 'Password: ' password
+read -p 'User Pool ID: ' poolId
+
+
+aws cognito-idp admin-create-user --user-pool-id ${poolId} --username ${username}
+aws cognito-idp admin-set-user-password --user-pool-id ${poolId} --username ${username} --password ${password} --permanent
